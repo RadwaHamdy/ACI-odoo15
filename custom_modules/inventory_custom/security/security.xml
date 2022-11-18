@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        # user group for printing labels
+    	<record id="group_print_labels" model="res.groups">
+            <field name="name">Print Labels</field>
+        </record>
+
+        # record rules for user group printing label
+        <record id="allow_own_transfers" model="ir.rule">
+            <field name="name">Allow Own Transfers</field>
+            <field name="model_id" search="[('model','=','stock.picking')]" model="ir.model"/>
+            <field name="groups" eval="[(4, ref('group_print_labels'))]"/>
+            <field name="domain_force">[('user_id','=',user.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="allow_own_warehouse_so" model="ir.rule">
+            <field name="name">Allow Own Warehouse SO</field>
+            <field name="model_id" search="[('model','=','sale.order')]" model="ir.model"/>
+            <field name="groups" eval="[(4, ref('group_print_labels'))]"/>
+            <field name="domain_force">[('warehouse_id','in', [ p.id for p in user.x_studio_allowed_warehouses ])]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

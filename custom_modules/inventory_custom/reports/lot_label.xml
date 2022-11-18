@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!--    Inherited template for lot label -->
+<template id="report_lot_label_custom" inherit_id="stock.report_lot_label">
+   <xpath expr="//table[@class='table table-condensed']" position="replace">
+    <table class="table table-condensed" style="border-bottom: 0px solid white !important;width: 3.5in;margin-left: -4mm">
+                                <tr>
+                                  <th style="text-align: left;width: 38mm;font-size: 24px;font-family:Arial" >
+                                    <span t-field="o.product_id.display_name"/>
+                                  </th>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center;font-size: 24px;font-weight: bold;">
+                                        LN:
+                                        <span t-field="o.display_name"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left; vertical-align: left;" class="col-5">
+                                        <img t-if="o.display_name" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;
+                                        width=%s&amp;height=%s' % ('Code128', o.name, 1200, 400)" style="text-align:left;
+                                        margin-left: -15mm;margin-top: -2mm;margin-right: 0mm;width:150%;height:24%;"/>
+                                  </td>
+                                </tr>
+    </table>
+</xpath>
+</template>
+
+
+
+</odoo>

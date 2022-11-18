@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_brand_name,access.CRUD.brand.name,model_brand_name,stock.group_stock_manager,1,1,1,1
+read_brand_name,read.brand.name,model_brand_name,stock.group_stock_user,1,0,0,0
+read_stock_lot,read.stock.lot,stock.model_stock_production_lot,inventory_custom.group_print_labels,1,0,0,0
+read_stock_picking,read.stock.picking,stock.model_stock_picking,inventory_custom.group_print_labels,1,0,0,0
+read_stock_move,read.stock.move,stock.model_stock_move,inventory_custom.group_print_labels,1,0,0,0

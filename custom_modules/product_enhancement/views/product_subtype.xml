@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="product_subtype_form_view" model="ir.ui.view">
+            <field name="name">product.subtype.form.view</field>
+            <field name="model">product.subtype</field>
+            <field name="arch" type="xml">
+                <form string="Product Subtype">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="code"/>
+                            </group>
+                            <group>
+                                <field name="type_id"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="product_subtype_list_view"  model="ir.ui.view" >
+            <field name="name">product.subtype.list.view</field>
+            <field name="model">product.subtype</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="type_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="product_subtype_action"  model="ir.actions.act_window">
+            <field name="name">Product Subtype</field>
+            <field name="res_model">product.subtype</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+</odoo>

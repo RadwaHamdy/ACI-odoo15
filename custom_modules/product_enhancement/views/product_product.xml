@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+ <record id="product_normal_form_view_inherit" model="ir.ui.view">
+        <field name="name">product.product.inherit</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('oe_title')]" position="before">
+                <field name="product_type" nolabel="1"  widget="radio" options="{'horizontal': true}" required="1"/>
+				 <div>
+                <field name="packaging_type" nolabel="1"  widget="radio" options="{'horizontal': true}"
+                       attrs="{'invisible':[('product_type','!=','packaging_material')], 'required': [('product_type','=','packaging_material')]}"/>
+           </div>
+            </xpath>
+            <xpath expr="//field[@name='uom_po_id']" position="after">
+                <field name="product_type_id" string="Type"
+                       attrs="{'invisible':[('product_type','!=','packaging_material')], 'required': [('product_type','=','packaging_material')]}"/>
+
+                <field name="product_subtype_id" string="Sub Type"
+                       attrs="{'invisible':[('product_type','!=','packaging_material')], 'required': [('product_type','=','packaging_material')]}"/>
+                <field name="brand_id" string="Brand Name"
+                       attrs="{'required': [('product_type','in',('finished_product', 'packaging_material'))]}"/>
+
+                <field name="product_version_id" string="Version"
+                       attrs="{'invisible':[('product_type','!=','packaging_material')], 'required': [('product_type','=','packaging_material')]}"/>
+
+            </xpath>
+
+            <xpath expr="//field[@name='default_code']" position="attributes">
+                <attribute name="string">SKU code</attribute>
+                <attribute name="attrs">{'readonly':[('product_type','in',['finished_product', 'packaging_material'])]}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name="attrs">{'readonly':[('product_type','=','finished_product')]}</attribute>
+            </xpath>
+        </field>
+ </record>
+</odoo>

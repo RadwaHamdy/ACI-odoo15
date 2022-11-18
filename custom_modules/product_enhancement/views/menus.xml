@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem name="Product Type" id="product_type_menu_list"
+              parent="stock.menu_product_in_config_stock"
+              sequence="51"
+              action="product_type_action" />
+    <menuitem name="Product Version" id="product_version_menu_list"
+              parent="stock.menu_product_in_config_stock"
+              sequence="52"
+              action="product_version_action" />
+    <menuitem name="Product SubType" id="product_subtype_menu_list"
+              parent="stock.menu_product_in_config_stock"
+              sequence="53"
+              action="product_subtype_action" />
+
+</odoo>
